@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Keyboard</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            background-color: cornsilk;
+            height: 100vh;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .butonlar {
+            width: 100%;
+            text-align: center;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .buton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 5px;
+            width: 40px;
+            height: 100px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple JavaScript Piano</h1>
+    <div class="butonlar">
+        <div class="buton do a">DO<br><br>A</div>
+        <div class="buton re s">RE<br><br>S</div>
+        <div class="buton mi d">Mİ<br><br>D</div>
+        <div class="buton fa f">FA<br><br>F</div>
+        <div class="buton sol g">SOL<br><br>G</div>
+        <div class="buton la h">LA<br><br>H</div>
+        <div class="buton si j">Sİ<br><br>J</div>
+        <div class="buton do2 k">DO<br><br>K</div>
+    </div>
+
+    <audio tus="a" src="sounds/do.wav"></audio>
+    <audio tus="s" src="sounds/re.wav"></audio>
+    <audio tus="d" src="sounds/mi.wav"></audio>
+    <audio tus="f" src="sounds/fa.wav"></audio>
+    <audio tus="g" src="sounds/sol.wav"></audio>
+    <audio tus="h" src="sounds/la.wav"></audio>
+    <audio tus="j" src="sounds/si.wav"></audio>
+    <audio tus="k" src="sounds/do2.wav"></audio>
+
+
+    <script>
+        //for keyboards
+        window.addEventListener('keydown', function (e) {
+            const audio = document.querySelector(`audio[tus=${e.key}]`);
+            audio.currentTime = 0;
+            audio.play();
+
+            document.getElementsByClassName(`${e.key}`)[0].style.backgroundColor = "green";
+            document.getElementsByClassName(`${e.key}`)[0].style.color = "white";
+        })
+
+        window.addEventListener('keyup', function (e) {
+            document.getElementsByClassName(`${e.key}`)[0].style.backgroundColor = "";
+            document.getElementsByClassName(`${e.key}`)[0].style.color = "";
+        })
+
+        //for touchscreens
+        window.addEventListener('touchstart', function (e) {
+
+            console.log(e);
+
+        })
+
+        window.addEventListener('touchend', function (e) {
+            console.log(e);
+
+        })
+    </script>
+    
+</body>
+</html>
